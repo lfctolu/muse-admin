@@ -1,0 +1,43 @@
+.header {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile {
+  height: 35px;
+}
+
+.email {
+  padding: 0;
+}
+
+.arrow {
+  font-size: 10px;
+}
+
+.sider {
+  overflow: auto;
+  height: 100vh;
+  position: fixed !important;
+  left: 0;
+  z-index: 100;
+}
+
+.spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  margin-left: 250px;
+}
+
+.content {
+  padding: 10px 20px;
+  margin: 20px;
+  background-color: white;
+}
