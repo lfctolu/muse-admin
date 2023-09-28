@@ -3,7 +3,8 @@ import Cookies from 'js-cookie';
 import { firebaseAuth } from './firebaseClient';
 import qs from 'qs';
 
-const baseURL = process.env.API_URL || 'https://api-dev.gyfted.it/api/v1/';
+const baseURL =
+  process.env.REACT_APP_API_URL || 'https://api-dev.gyfted.it/api/v1/';
 
 const apiClient = axios.create({
   baseURL,
