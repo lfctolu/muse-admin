@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Table, message, Modal, Input } from 'antd';
 import profilesApi from 'api/profilesApi';

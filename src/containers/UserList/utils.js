@@ -3,7 +3,7 @@ import React from 'react';
 
 const getColumns = (deleteAction) => [
   {
-    title: 'username',
+    title: 'Username',
     dataIndex: 'username',
     key: 'username',
   },
@@ -20,7 +20,7 @@ const getColumns = (deleteAction) => [
   },
   {
     title: 'Action',
-    key: 'avatar',
+    key: 'action',
     render: (user) => (
       <Button type="primary" danger onClick={() => deleteAction(user)}>
         Delete
