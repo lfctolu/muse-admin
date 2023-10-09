@@ -25,6 +25,6 @@ export const MENU_ITEMS = [
     key: 'b',
     icon: <FlagOutlined />,
     name: 'Banners',
-    //href: '/users',
+    href: '/banners',
   },
 ];

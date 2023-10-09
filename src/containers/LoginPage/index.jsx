@@ -8,7 +8,6 @@ import { firebaseAuth } from 'api/firebaseClient';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import styles from './LoginPage.module.scss';
 import Cookies from 'js-cookie';
-import accountApi from 'api/accountApi';
 
 const LoginPage = () => {
   const setAuthAtom = useSetAtom(authAtom);
