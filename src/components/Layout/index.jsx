@@ -69,7 +69,6 @@ function MainLayout(props) {
           <Dropdown overlay={menu} placement="bottom">
             <Space className={styles.profile}>
               <p className={styles.email}>{auth?.profile?.email}</p>
-              <Avatar icon={<UserOutlined />} />
               <DownOutlined className={styles.arrow} />
             </Space>
           </Dropdown>

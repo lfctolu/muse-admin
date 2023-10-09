@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { firebaseAuth } from './firebaseClient';
-import qs from 'qs';
+import queryString from 'query-string';
 
 const baseURL =
   process.env.REACT_APP_API_URL || 'https://api-dev.gyfted.it/api/v1/';
@@ -11,7 +11,7 @@ const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  paramsSerializer: (params) => qs.stringify(params),
+  paramsSerializer: (params) => queryString.stringify(params),
 });
 
 const requestInterceptor = (config) => {

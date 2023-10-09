@@ -5,7 +5,9 @@ import ElementWrapper from 'components/ElementWrapper';
 import LoginPage from './containers/LoginPage';
 import UserListPage from './containers/UserList';
 import ProductListPage from './containers/ProductList';
-//import BannerList from './components/BannerList';
+import BannerListPage from './containers/BannerList';
+import BannerPage from './containers/BannerPage';
+import BannerItemList from './containers/BannerItemList';
 
 const AppRouter = () => {
   return (
@@ -20,8 +22,19 @@ const AppRouter = () => {
         <Route
           path="/products"
           element={<ElementWrapper component={ProductListPage} />}
-        />{' '}
-        {/* <Route path="/banners" component={BannerList} /> */}
+        />
+        <Route
+          path="/banners"
+          element={<ElementWrapper component={BannerListPage} />}
+        />
+        <Route
+          path="/banners/:id"
+          element={<ElementWrapper component={BannerPage} />}
+        />
+        <Route
+          path="/banners/:id/items"
+          element={<ElementWrapper component={BannerItemList} />}
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -23,7 +23,7 @@ const ProductListPage = () => {
       setItemList(response.data);
       setTotal(response.headers['x-total-count']);
     } catch (error) {
-      message.error('Error on get profile list');
+      message.error('Error on get item list');
     } finally {
       setLoading(false);
     }
