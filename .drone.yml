@@ -11,7 +11,7 @@ type: docker
 
 steps:
   - name: build staging
-    image: node:18
+    image: node:18-alpine
     commands:
       - cp .env.staging .env
       - npm install
