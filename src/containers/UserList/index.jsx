@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Table, message, Modal, Input } from 'antd';
+import { Table, message, Modal, Input, Button } from 'antd';
 import profilesApi from 'api/profilesApi';
 import { getColumns } from './utils';
 import styles from './UserList.module.scss';
 import debounce from 'lodash/debounce';
+import { DownloadOutlined } from '@ant-design/icons';
 
 const SEARCH_DELAY = 500;
 
@@ -13,6 +14,7 @@ const UserListPage = () => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useSearchParams({ page: 1, size: 20, query: '' });
+  const [isDownload, setDownload] = useState(false);
 
   const fetchUserList = async () => {
     try {
@@ -60,6 +62,26 @@ const UserListPage = () => {
     setParams(params);
   }, SEARCH_DELAY);
 
+  const downloadCsv = async () => {
+    try {
+      setDownload(true);
+      const csv = await profilesApi.generateCsv();
+      const url = URL.createObjectURL(csv.data);
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = 'profiles.csv';
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    } catch (e) {
+      message.error('Error on downloading csv');
+    } finally {
+      setDownload(false);
+    }
+  };
+
   useEffect(() => {
     fetchUserList();
     return () => {
@@ -73,7 +95,17 @@ const UserListPage = () => {
 
   return (
     <div>
-      <h2>User List</h2>
+      <div className={styles.header}>
+        <h2>User List</h2>
+        <Button
+          onClick={downloadCsv}
+          icon={<DownloadOutlined />}
+          type="primary"
+          loading={isDownload}
+        >
+          Download CSV
+        </Button>
+      </div>
       <div>
         <Input.Search
           className={styles.search}
