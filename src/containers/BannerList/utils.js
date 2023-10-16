@@ -56,7 +56,14 @@ const getColumns = (deleteAction) => [
     title: 'Action',
     key: 'action',
     render: (item) => (
-      <Button type="primary" danger onClick={() => deleteAction(item)}>
+      <Button
+        type="primary"
+        danger
+        onClick={async (e) => {
+          e.stopPropagation();
+          await deleteAction(item);
+        }}
+      >
         Delete
       </Button>
     ),
