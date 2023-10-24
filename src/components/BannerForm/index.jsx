@@ -36,7 +36,6 @@ const BannerForm = ({ banner, total, onFinish }) => {
   };
 
   const handlePreview = async (file) => {
-    console.log(file);
     Modal.info({
       title: file.name,
       content: (
@@ -73,8 +72,7 @@ const BannerForm = ({ banner, total, onFinish }) => {
           {
             required: true,
             validator: (rule, value) => {
-              console.log(value);
-              if (!value.file || value.file.status === 'removed') {
+              if (!value?.file || value.file.status === 'removed') {
                 return Promise.reject('Image is required');
               }
 
