@@ -148,8 +148,6 @@ const BannerPage = () => {
     fetchItems();
   }, [tab, params, pathname]);
 
-  console.log(params);
-
   return (
     <div className={styles.banner}>
       <div className={styles.header}>

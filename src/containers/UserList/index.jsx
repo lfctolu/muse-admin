@@ -96,7 +96,7 @@ const UserListPage = () => {
   return (
     <div>
       <div className={styles.header}>
-        <h2>User List</h2>
+        <h2>Users</h2>
         <Button
           onClick={downloadCsv}
           icon={<DownloadOutlined />}
