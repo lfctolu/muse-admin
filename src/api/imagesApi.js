@@ -2,7 +2,7 @@ import apiClient from './axiosClient';
 import axios from 'axios';
 
 const API = {
-  generateImageUrl: () => apiClient.post('images', { type: 'STANDARD' }),
+  generateImageUrl: () => apiClient.post('images', { type: 'ORIGINAL' }),
   upload: (url, data) => axios.put(url, data),
 };
 
