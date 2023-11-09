@@ -32,3 +32,41 @@ steps:
       - echo "aws_secret_access_key = $AWS_SECRET_KEY" >> ~/.aws/credentials
       - aws s3 sync build/ s3://muse-admin-staging
       - aws cloudfront create-invalidation --distribution-id E3O6TLIP9RGMEC --paths "/*"
+
+---
+kind: pipeline
+name: build and deploy prod
+
+trigger:
+  branch: 
+    - main
+  event:
+    - push
+  ref:
+    - refs/tags/prod-*
+
+type: docker
+
+steps:
+  - name: build prod
+    image: node:18-alpine
+    commands:
+      - cp .env.prod .env
+      - npm install
+      - CI=false npm run build
+      - echo -n "$DRONE_COMMIT" > .tags
+
+  - name: deploy to prod
+    image: amazon/aws-cli
+    environment:
+      AWS_ACCESS_KEY:
+        from_secret: aws_access_key_id
+      AWS_SECRET_KEY:
+        from_secret: aws_secret_access_key
+    commands:
+      - mkdir ~/.aws
+      - echo "[default]" > ~/.aws/credentials
+      - echo "aws_access_key_id = $AWS_ACCESS_KEY" >> ~/.aws/credentials
+      - echo "aws_secret_access_key = $AWS_SECRET_KEY" >> ~/.aws/credentials
+      - aws s3 sync build/ s3://muse-admin-prod
+      - aws cloudfront create-invalidation --distribution-id EA4BBDYHVPTZU --paths "/*"

@@ -61,10 +61,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Dev
+
+Dev deploy happening automatically on commit to **main**
+
+### Prod
+
+Production deployment happens automatically on git tag event on **main** branch with `prod-` prefix
+
+```bash
+git fetch
+git checkout main
+git pull
+git tag prod-XXX
+git push --tags
+```
