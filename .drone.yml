@@ -38,8 +38,6 @@ kind: pipeline
 name: build and deploy prod
 
 trigger:
-  branch: 
-    - main
   event:
     - push
   ref:
